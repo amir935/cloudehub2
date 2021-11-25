@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8eca3450-cd4c-46a6-8983-a8edf04bb080" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="7f95bfb2-7b09-43a9-af79-1bb6f5228ba0" file="dev.yaml" />
+	<flow name="jenkins-with-muleFlow" doc:id="1a07a029-e33e-4604-9fed-6395139762f5" >
+		<http:listener doc:name="Listener" doc:id="2c86b4b7-71d0-4a6b-981f-b8b9d68a9e1a" config-ref="HTTP_Listener_config" path="/cloud1"/>
+		<set-payload value='#["hello batch 22"]' doc:name="Set Payload" doc:id="f1c171cb-b93c-4736-9790-44ee06abcbd0" />
+	</flow>
+</mule>
